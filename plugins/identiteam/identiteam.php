@@ -98,7 +98,8 @@ class identiteam extends rcube_plugin
                 }
                 if ($domain_to_check && $domain && strtolower($domain_to_check)===strtolower($domain)) {
                     $arguments['abort'] = false;
-                }
+                } else {
+                    $this->app->output->show_message('emailformaterror', 'error', array('email' => "@$domain_to_check != @$domain"));                }
             }
         } catch (Exception $exc) {
             write_log('identiteam', 'Fail to check email: ' . $exc->getMessage());
